@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id           String         @id @default(cuid())
+  clerkUserId  String         @unique
+  name         String
+  imageUrl     String
+  email        String         @unique
+  created_at   DateTime       @default(now())
+  updated_at   DateTime       @updatedAt
+  Subscription Subscription[]
+}
+
+model Subscription {
+  id      String @id @default(cuid())
+  credits Int    @default(3)
+  email   String @unique
+  User    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  String
+}
+
+model Interview {
+  id                String              @id @default(cuid())
+  jobPosition       String
+  jobDesc           String
+  interviewDuration String
+  interviewType     String[]
+  validTill         DateTime
+  feedbacks         InterviewFeedback[] @relation("InterviewToFeedback")
+  questions         Question[]          @relation("InterviewToQuestions")
+  userEmail         String
+  created_at        DateTime            @default(now())
+}
+
+model InterviewFeedback {
+  id          String    @id @default(cuid())
+  username    String
+  userEmail   String    @unique
+  Interview   Interview @relation("InterviewToFeedback", fields: [interviewId], references: [id], onDelete: Cascade)
+  interviewId String
+  feedback    Json
+  created_at  DateTime  @default(now())
+}
+
+model Question {
+  id          String    @id @default(cuid())
+  question    String
+  type        String
+  interviewId String
+  Interview   Interview @relation("InterviewToQuestions", fields: [interviewId], references: [id], onDelete: Cascade)
+}
