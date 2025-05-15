@@ -70,7 +70,9 @@ const page = async ({ params }) => {
         <h1>Candidates (0)</h1>
         <div className='mt-2 flex flex-col gap-2'>
           {
-            allFeedbacks.map((ele, idx) => <Candidate data={ele} key={idx} />)
+            allFeedbacks.map((ele, idx) => {
+              return <Candidate data={ele} key={idx} />
+            })
           }
         </div>
       </div>

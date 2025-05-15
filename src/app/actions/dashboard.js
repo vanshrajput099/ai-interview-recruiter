@@ -6,7 +6,7 @@ export const getInterviews = async () => {
         const { userId } = await auth();
         if (!userId) throw new Error("Unauthorized");
 
-        const user = await db.user.findMany({
+        const user = await db.user.findUnique({
             where: { clerkUserId: userId },
         });
 
@@ -14,11 +14,15 @@ export const getInterviews = async () => {
             throw new Error("User not found");
         }
 
+        console.log(user)
+
         const dashBoardInterviews = await db.interview.findMany({
             where: {
                 userEmail: user.email
             }
         });
+
+        console.log(dashBoardInterviews)
 
         return dashBoardInterviews;
     } catch (error) {

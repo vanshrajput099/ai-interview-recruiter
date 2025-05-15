@@ -4,7 +4,8 @@ import DialogComponent from '../[id]/detail/_components/DialogComponent';
 
 const Candidate = ({ data }) => {
 
-    const feedbackData = (JSON.parse(data.feedback).feedback);
+    const feedbackData = (JSON.parse(data.feedback)).feedback
+
     let percentage = 0;
     Object.keys(feedbackData.rating).forEach((ele) => {
         percentage = percentage + feedbackData.rating[ele];
