@@ -10,7 +10,6 @@ import Questions from '@/app/(main)/_components/Questions';
 const page = () => {
 
     const [step, setStep] = useState(1);
-    console.log(step)
     const [interviewUrl, setInterviewUrl] = useState(null);
     const [interviewQuestions, setInterviewQuestions] = useState(null);
     const router = useRouter();

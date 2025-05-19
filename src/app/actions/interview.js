@@ -204,10 +204,6 @@ export const getUserFeedback = async (interviewId, userEmail) => {
             }
         });
 
-        if (!feedbacks) {
-            return [];
-        }
-
         return feedbacks;
     } catch (error) {
         throw error;

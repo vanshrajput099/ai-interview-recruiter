@@ -28,7 +28,7 @@ const page = async () => {
             </div>
             <div className="flex flex-col gap-5 mt-10">
                 <h1 className="text-xl lg:text-3xl font-bold">Previously Created Interviews</h1>
-                <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="grid grid-cols-1 mt-5 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                     {
                         data.length === 0 ?
                             <>

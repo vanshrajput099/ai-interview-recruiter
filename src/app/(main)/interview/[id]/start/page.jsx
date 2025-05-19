@@ -120,7 +120,9 @@ const page = () => {
   const endInterviewFunction = async () => {
     await vapi.stop();
     setCancel(true);
-    await fn(conversation, interviewData.username, interviewData.email, interviewData.id);
+    if (conversation && conversation.length < 10) {
+      await fn(conversation, interviewData.username, interviewData.email, interviewData.id);
+    } 
     setTimeout(() => {
       router.replace("/interview/" + interviewData.id + "/completed");
     }, 100);

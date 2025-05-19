@@ -21,7 +21,7 @@ const PreviousInterviewBox = ({ data, detailBox = false }) => {
     }
 
     return (
-        <div className="flex flex-col gap-2 border border-gray-200 p-7 bg-white">
+        <div className="flex flex-col justify-between gap-2 border border-gray-200 p-7 bg-white">
             <div className="w-full flex justify-between items-center">
                 <div className="bg-blue-200 px-3 py-2 rounded-sm w-fit">
                     <Mail className="h-[1.5rem] w-[1.5rem] text-blue-700" />

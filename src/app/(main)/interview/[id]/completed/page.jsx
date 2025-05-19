@@ -18,7 +18,7 @@ const page = () => {
     const [colorClass, setColorClass] = useState(null);
 
     const fun = async () => {
-        await fn(interviewData.id, interviewData.userEmail);
+        await fn(interviewData.id, interviewData.email);
     }
 
     useEffect(() => {
@@ -30,7 +30,6 @@ const page = () => {
     useEffect(() => {
         fun();
     }, [])
-
 
     useEffect(() => {
         if (!interviewData) {
@@ -64,7 +63,7 @@ const page = () => {
         }
     }, [loading, data])
 
-    if (!feedbackData) {
+    if (loading) {
         return (
             <div className="min-h-screen min-w-screen flex justify-center items-center">
                 <h1 className="text-2xl font-bold flex gap-2">Loading...<Loader2 className="animate-spin" /></h1>
@@ -72,10 +71,15 @@ const page = () => {
         )
     }
 
-    if (loading) {
+    if (!loading && !feedbackData) {
         return (
-            <div className="min-h-screen min-w-screen flex justify-center items-center">
-                <h1 className="text-2xl font-bold flex gap-2">Loading...<Loader2 className="animate-spin" /></h1>
+            <div className="min-h-screen min-w-screen flex flex-col justify-center items-center">
+                <h1 className="text-2xl font-bold flex gap-2 text-center">
+                    Not Enough Data To Get Feedback.
+                </h1>
+                <div className="text-center font-bold text-sm mt-5 md:text-base">
+                    <h1>- You Can Now Close This Tab -</h1>
+                </div>
             </div>
         )
     }

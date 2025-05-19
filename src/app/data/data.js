@@ -29,7 +29,8 @@ export const interview_type =
         }
     ]
 
-export const PROMPT = `You are an expert technical interviewer.
+export const PROMPT = `
+    You are an expert technical interviewer.
     Based on the following inputs, generate a well-structured list of high - quality interview questions:
     Job Title: {{jobTitle}}
     Job Description: {{jobDescription}}
@@ -97,10 +98,13 @@ export const assistantOptions = {
     },
 };
 
-export const feedbackPROMPT = `{{conversation}}
+export const feedbackPROMPT = `
+{{conversation}}
 Depends on this Interview Conversation between assistant and user,
-    Give me feedback for user interview.Give me rating out of 10 for technical Skills,
-        Communication, Problem Solving, Experince.Also give me summery in 3 lines  
+Be very strict on the basis of the conversation , If conversation is less or very less give all the marks as 0
+Be more and more strict please
+Give me feedback for user interview.Give me rating out of 10 for technical Skills,
+Communication, Problem Solving, Experince.Also give me summery in 3 lines  
 about the interview and one line to let me know whether is recommanded
 for hire or not with msg.Give me response in JSON format
 {

@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from 'react'
-import Header from './_components/Header'
 import { InterviewDataContext } from '@/app/context/InterviewDataContext'
 
 const DashBoardLayout = ({ children }) => {

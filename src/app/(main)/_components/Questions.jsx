@@ -27,7 +27,6 @@ const Questions = ({ interviewQuestions, formData, setStep, setInterviewUrl }) =
 
   useEffect(() => {
     if (error) {
-      console.log(error)
       toast.error(error.message)
     }
   }, [error])
